@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* styles.css or your main CSS file */
+:root {
+  --light-background: #ffffff;
+  --light-text: #000000;
+  --primary: #3B82F6; /* Primary color for light theme */
+}
+
+body {
+  background-color: var(--light-background);
+  color: var(--light-text);
+}
+
+.dark {
+  --dark-background: #1F2937; /* Dark background */
+  --dark-text: #ffffff; /* Dark text color */
+}
+
+/* Apply dark theme styles */
+.dark body {
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+}
+
+/* You can add more styles as necessary for other components */
