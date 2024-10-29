@@ -2,3 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    /* Light mode colors */
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    /* Set transition properties */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dark {
+    /* Dark mode colors */
+    --bg-color: #000000;
+    --text-color: #ffffff;
+  }
+  
+  /* Apply CSS variables globally */
+  html, body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  /* Optional: transition for other themed elements */
+  button, .some-element {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  

@@ -15,21 +15,15 @@ const Header = () => {
 
   return (
     <header>
+
       <nav className="bg-light-background dark:bg-dark-background border-gray-200 px-4 lg:px-6 py-2.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <a href="https://flowbite.com" className="flex items-center">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="mr-3 h-6 sm:h-9"
-              alt="Flowbite Logo"
-            />
-            <span className="self-center text-xl font-semibold whitespace-nowrap text-light-text dark:text-dark-text">
-              Flowbite
-            </span>
+          <a href="" className='text-gray-800 text-2xl dark:text-white'>
+            NK
           </a>
           <div className="flex items-center lg:order-2">
-            <ThemeToggle />
-         
+
+
             <button
               data-collapse-toggle="mobile-menu-2"
               type="button"
@@ -65,28 +59,34 @@ const Header = () => {
             </button>
           </div>
           <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+            <ul className="flex flex-col mt-4 fontmedium lg:flex-row lg:space-x-8 lg:mt-0">
               {menuItems.map((item, index) => (
-               <li key={index}>
-               <a
-                 href={item.href}
-                 className={`block py-2 pr-4 pl-3 ${
-                   activeItem === item.name
-                     ? "text-blue-700 rounded bg-blue-100 lg:bg-transparent lg:text-blue-700 dark:text-white"
-                     : "text-gray-800 dark:text-gray-400 border-b border-gray-100 hover:bg-blue-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                 } lg:p-0 transition-colors duration-300`}
-                 aria-current={activeItem === item.name ? "page" : undefined}
-                 onClick={() => setActiveItem(item.name)}
-               >
-                 {item.name}
-               </a>
-             </li>
-             
+                <li key={index}>
+                  <a
+                    href={item.href}
+                    className={`block py-2 pr-4 pl-3 ${activeItem === item.name
+                      ? "text-blue-700 rounded bg-blue-100 lg:bg-transparent lg:text-blue-700 dark:text-white"
+                      : "text-gray-800 dark:text-gray-400 border-b border-gray-100 hover:bg-blue-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                      } lg:p-0 transition-colors duration-300`}
+                    aria-current={activeItem === item.name ? "page" : undefined}
+                    onClick={() => setActiveItem(item.name)}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+
               ))}
             </ul>
           </div>
         </div>
       </nav>
+
+
+      <ThemeToggle />
+
+
+
+
     </header>
   );
 };
