@@ -1,42 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { TextPlugin } from 'gsap/TextPlugin';
 
-const TypingText = ({ text , typingSpeed = 150, pauseDuration = 1000 }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [index, setIndex] = useState(0);
+gsap.registerPlugin(TextPlugin);
+
+const TypingText = ({ text, typingSpeed = 0.15, pauseDuration = 1, repetitions = 3 }) => {
+  const textRef = useRef(null);
 
   useEffect(() => {
-    let timer;
-    if (!isDeleting && index < text.length) {
-      timer = setTimeout(() => {
-        setDisplayedText((prev) => prev + text.charAt(index));
-        setIndex((prev) => prev + 1);
-      }, typingSpeed);
-    } 
-    // Deleting effect
-    else if (isDeleting && index > 0) {
-      timer = setTimeout(() => {
-        setDisplayedText((prev) => prev.slice(0, -1));
-        setIndex((prev) => prev - 1);
-      }, typingSpeed);
-    } 
-    // When typing is complete, pause, then start deleting
-    else if (index === text.length && !isDeleting) {
-      timer = setTimeout(() => setIsDeleting(true), pauseDuration);
-    } 
-    // Reset to start typing again after deleting
-    else if (index === 0 && isDeleting) {
-      setIsDeleting(false);
-      setTimeout(() => setIndex(0), pauseDuration);
-    }
+    const timeline = gsap.timeline({ repeat: repetitions });
 
-    return () => clearTimeout(timer);
-  }, [index, isDeleting, text, typingSpeed, pauseDuration]);
+    // Typing effect
+    timeline.to(textRef.current, {
+      text: text,
+      duration: text.length * typingSpeed,
+      ease: 'none',
+    });
+
+    // Pause before deleting
+    timeline.to(textRef.current, { duration: pauseDuration });
+
+    // Deleting effect from the end
+    const deleteTimeline = gsap.timeline({
+      repeat: text.length - 1,
+      onRepeat: () => {
+        const currentText = textRef.current.textContent;
+        textRef.current.textContent = currentText.slice(0, -1);
+      },
+    });
+
+    deleteTimeline.to({}, { duration: typingSpeed });
+    timeline.add(deleteTimeline);
+
+    return () => {
+      timeline.kill();
+      deleteTimeline.kill(); // Cleanup delete timeline
+    };
+  }, [text, typingSpeed, pauseDuration, repetitions]);
 
   return (
-    <span className="text-gray-800 dark:text-white">
-      {displayedText}
-    </span>
+    <div ref={textRef} className="typing-effect">
+      {/* GSAP will handle the text content */}
+    </div>
   );
 };
 
