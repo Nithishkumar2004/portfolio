@@ -18,6 +18,7 @@ const ThemeToggle = () => {
       <button
         onClick={handleToggle}
         aria-label="Toggle theme"
+        className='inline-block'
       >
         <img src={isDark ? LightBulb : LightBulb2} alt="Toggle Icon"/>
       </button>
