@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -10,7 +10,7 @@ import Experience from './pages/Experience';
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -20,7 +20,7 @@ function App() {
             <Route path="experience" element={<Experience />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </ThemeProvider>
   );
 }
