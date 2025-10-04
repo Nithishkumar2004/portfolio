@@ -28,4 +28,6 @@ The portfolio is built with a modern tech stack to ensure performance, maintaina
 - New projects, certifications, or achievements can be added by simply adding new entries to the data files.
 - The system is modular, allowing easy addition of new sections or features in the future.
 
-This approach ensures that the portfolio remains current, professional, and fully automated while giving flexibility to expand and enhance features as needed.
+This approach ensures that the portfolio remains current, professional, and fully automated while giving flexibility to expand and enhance features as needed.  
+
+**Live Site:** [https://nithishkumar2004.github.io/portfolio/](https://nithishkumar2004.github.io/portfolio/)
