@@ -1,10 +1,16 @@
 export interface Project {
-  title: string;
+  id: number;
+  number: string;
+  name: string;
+  category: string;
   description: string;
-  techStack: string;
-  githubLink: string;
-  demoLink: string;
-  imageUrl?: string;
+  technologies: string[];
+  role: string;
+  impact: string;
+  image: string;
+  githubLink?: string;
+  demoLink?: string;
+  caseStudy?: string;
 }
 
 export interface Achievement {
@@ -14,6 +20,7 @@ export interface Achievement {
 }
 
 export interface Certification {
+  id: number;
   title: string;
   issuingOrg: string;
   date: string;
@@ -21,12 +28,15 @@ export interface Certification {
 }
 
 export interface Experience {
-  companyUrl :string;
+  id: number;
+  period: string;
+  title: string;
   company: string;
-  role: string;
-  duration: string;
-  description: string;
-  skills: string;
+  companyUrl?: string;
+  location: string;
+  responsibilities: string[];
+  technologies: string[];
+  achievements: string[];
 }
 
 export interface Education {
@@ -37,6 +47,6 @@ export interface Education {
 }
 
 export interface Skill {
-    category:string;
-    skill : string;
+  category: string;
+  skill: string;
 }
